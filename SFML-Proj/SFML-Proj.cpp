@@ -185,7 +185,7 @@ int main()
 		b13.setDeselectionColour(sf::Color(0, 255, 255, 127));
 		b13.setTextSelectionColour(sf::Color::Green);
 
-		auto &b14 = buttonHandler.addButton("Change Text B13", [&]
+		auto &b14 = buttonHandler.addButton("Change B13 Text", [&]
 			{
 				if (!changedText)
 					b13.setText("hehe");
