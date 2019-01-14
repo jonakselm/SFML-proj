@@ -5,9 +5,9 @@
 class ButtonHandler
 {
 public:
-	ButtonHandler(const sf::Font &font) : m_font(font) {}
+	ButtonHandler(sf::Font &font) : m_font(font) {}
 	~ButtonHandler() = default;
-		
+
 	void setSpacing(int spacing);
 	int getSpacing() const;
 
@@ -21,13 +21,16 @@ public:
 
 	void handleInput(sf::Window &window);
 	void draw(sf::RenderTarget &target) const;
-	
-	auto getButtons() const { return m_buttons; }
 
+	auto &buttons() { return m_buttons; }
+	const auto &buttons() const { return m_buttons; }
+
+	//auto &operator[](size_t index) { return m_buttons[index]; }
+	//const auto &operator[](size_t index) const { return m_buttons[index]; }
 private:
 	bool toogleInputMode();
 	void handleKeyEvents(sf::Window &window);
-	void handleMouseEvents(sf::Window &window); // TODO: implement pollevent
+	void handleMouseEvents(sf::Window &window); // TODO: implement, pollevent
 
 private:
 	sf::Vector2i m_lastMousePos;
@@ -35,8 +38,8 @@ private:
 	int m_defaultWidth = 250, m_defaultHeight = 60;
 	int m_xCurr = 0, m_yCurr = 0;
 	int m_spacing = 10;
-	int m_index = 0;
-	std::vector<Button> m_buttons;
-	const sf::Font &m_font;
+	std::list<Button> m_buttons;
+	decltype(m_buttons)::iterator m_it;
+	sf::Font &m_font;
 };
 

@@ -58,6 +58,7 @@ int main()
 	bool windowMoveColor = false;
 	bool windowAutoColor = false;
 	bool autoFollowMouse = false;
+	bool changedText = false;
 
 		//Buttons Start
 		auto &b1 = buttonHandler.addButton("Random Color", [&]
@@ -153,6 +154,7 @@ int main()
 			{
 				auto pos = sf::Mouse::getPosition(window);
 				shape->setPosition(pos.x - 20, pos.y - 20);
+				autoFollowMouse = false;
 			});
 		b11.setSelectionColour(sf::Color(0, 255, 255, 127));
 		b11.setDeselectionColour(sf::Color(0, 255, 255, 127));
@@ -166,7 +168,7 @@ int main()
 		b12.setDeselectionColour(sf::Color(0, 255, 255, 127));
 		b12.setTextSelectionColour(sf::Color::Green);
 
-		auto &b13 = buttonHandler.addButton("Change shape", [&]
+		auto &b13 = buttonHandler.addButton("Change Shape", [&]
 			{
 				auto pos = shape->getPosition();
 				auto color = shape->getFillColor();
@@ -182,6 +184,19 @@ int main()
 		b13.setSelectionColour(sf::Color(0, 255, 255, 127));
 		b13.setDeselectionColour(sf::Color(0, 255, 255, 127));
 		b13.setTextSelectionColour(sf::Color::Green);
+
+		auto &b14 = buttonHandler.addButton("Change Text B13", [&]
+			{
+				if (!changedText)
+					b13.setText("hehe");
+				else
+					b13.setText("Change Shape");
+				changedText = !changedText;
+			});
+		b14.setSelectionColour(sf::Color(0, 255, 255, 127));
+		b14.setDeselectionColour(sf::Color(0, 255, 255, 127));
+		b14.setTextSelectionColour(sf::Color::Green);
+
 		//Buttons End
 
 	keyHandler.addKey(sf::Keyboard::W, [&] 
@@ -199,6 +214,19 @@ int main()
 	keyHandler.addKey(sf::Keyboard::D, [&]
 		{
 			shape->move(10, 0);
+		});
+	keyHandler.addKey(sf::Keyboard::R, [&]
+		{
+			b1.invoke();
+		});
+	keyHandler.addKey(sf::Keyboard::F, [&]
+		{
+			b11.invoke();
+		});
+	keyHandler.addKey(sf::Keyboard::X, [&]
+		{
+			auto pos = sf::Mouse::getPosition(window);
+			b13.setPosition(pos.x - 150, pos.y - 30);
 		});
 
 	while (window.isOpen())

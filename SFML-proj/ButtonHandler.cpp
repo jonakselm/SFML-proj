@@ -37,17 +37,18 @@ Button &ButtonHandler::addButton(const std::string &text, const std::function<vo
 {
 	auto &button = m_buttons.emplace_back(m_font);
 	if (m_buttons.size() == 1)
+	{
 		button.select();
+		m_it = m_buttons.begin();
+	}
 
 	button.setSize(m_defaultWidth, m_defaultHeight);
 	button.setPosition(m_xCurr, m_yCurr);
 	button.setText(text);
 	button.setActionHandler(func);
 
-	auto[buttonX, buttonY] = button.getPosition();
-	auto[buttonWidth, buttonHeight] = button.getSize();
-
-	m_yCurr = buttonY + buttonHeight + m_spacing;
+	auto bounds = button.getGlobalBounds();
+	m_yCurr = bounds.top + bounds.height + m_spacing;
 
 	return button;
 }
@@ -92,57 +93,49 @@ void ButtonHandler::handleKeyEvents(sf::Window &window)
 	if (m_buttons.empty())
 		return;
 
-	if (m_index >= m_buttons.size())
+	if (m_it._Ptr == nullptr)
 	{
-		m_index = 0;
-		m_buttons[m_index].select();
+		m_it = m_buttons.begin();
+		m_it->select();
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
-		m_buttons[m_index].deselect();
-		m_index = (m_buttons.size() + (m_index - 1)) % m_buttons.size();
-		m_buttons[m_index].select();
+		m_it->deselect();
+		if (m_it-- == m_buttons.begin())
+			m_it = --m_buttons.end();
+		m_it->select();
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 	{
-		m_buttons[m_index].deselect();
-		m_index = (m_index + 1) % m_buttons.size();
-		m_buttons[m_index].select();
+		m_it->deselect();
+		if (m_it++ == --m_buttons.end())
+			m_it = m_buttons.begin();
+		m_it->select();
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
 	{
-		m_buttons[m_index].invoke();
+		m_it->invoke();
 	}
 }
 
 void ButtonHandler::handleMouseEvents(sf::Window &window)
 {
+	m_it._Ptr = nullptr;
 	auto pos = sf::Mouse::getPosition(window);
-	bool anySelected = false;
-
-	for (int index = m_buttons.size() - 1; index >= 0; --index)
+	for (auto it = m_buttons.begin(); it != m_buttons.end(); ++it)
 	{
-		auto &button = m_buttons[index];
-
-		if (button.contains(pos.x, pos.y))
+		if (it->contains(pos.x, pos.y))
 		{
-			m_index = index;
-			anySelected = true;
-			button.select();
+			m_it = it;
+			it->select();
 		}
 		else
 		{
-			button.deselect();
+			it->deselect();
 		}
 	}
 
-	if (!anySelected)
-		m_index = -1;
-
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-	{
-		if (m_index < m_buttons.size())
-			m_buttons[m_index].invoke();
-	}
+	if (m_it._Ptr && sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		m_it->invoke();
 }

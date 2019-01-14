@@ -53,7 +53,7 @@ sf::FloatRect Button::getGlobalBounds() const
 	return m_sprite.getGlobalBounds();
 }
 
-void Button::setActionHandler(std::function<void()> func)
+void Button::setActionHandler(const std::function<void()> &func)
 {
 	m_func = func;
 }
@@ -68,7 +68,7 @@ void Button::setText(const std::string &text)
 	m_text.setString(text);
 }
 
-std::string Button::getText()
+std::string Button::getText() const
 {
 	return m_text.getString();
 }
@@ -91,7 +91,7 @@ void Button::setFont(const sf::Font &font)
 const sf::Font &Button::getFont() const
 {
 	if (!m_pFont)
-		throw std::exception("Font is missing, not supposed to happen");
+		throw std::runtime_error("Font is missing, not supposed to happen");
 
 	return *m_pFont;
 }

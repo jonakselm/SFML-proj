@@ -31,7 +31,7 @@ public:
 public:
 	
 	void setText(const std::string &text);
-	std::string getText();
+	std::string getText() const;
 
 	void setTextSize(unsigned int size);
 	unsigned int getTextSize() const;
@@ -74,16 +74,19 @@ public:
 	// Usage2: button.setActionHandler([]
 	// { doWhatever(); });
 	// Usage3: button.setActionHandler(std::bind(&Game::somefunc, this));
-	void setActionHandler(std::function<void()> func);
+	void setActionHandler(const std::function<void()> &func);
 
 	void invoke() const;
 
-///////////////////////////////////////////////
+////////////////////////////////////////////////
 	// Member variables
 private:
 	bool m_selected = false;
-	sf::Color m_colourSelect = sf::Color::Red, m_colourDeselect = sf::Color::Red;
-	sf::Color m_textColourSelect = sf::Color::Yellow, m_textColourDeselect = sf::Color::White;
+	sf::Color 
+		m_colourSelect = sf::Color::Red, 
+		m_colourDeselect = sf::Color::Red,
+		m_textColourSelect = sf::Color::Yellow, 
+		m_textColourDeselect = sf::Color::White;
 	const sf::Font *m_pFont;
 	sf::Text m_text;
 	sf::Sprite m_sprite;
