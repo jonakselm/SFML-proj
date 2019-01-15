@@ -3,6 +3,8 @@
 #include <iostream>
 #include "ButtonHandler.hpp"
 #include "KeyHandler.hpp"
+#include "Game.h"
+#include "Board.h"
 
 sf::Color randomColour()
 {
@@ -40,6 +42,8 @@ int main()
 
 	sf::Font font;
 	font.loadFromFile("data/fonts/Georgia.ttf");
+
+	Game game;
 	
 	KeyHandler keyHandler;
 
@@ -59,6 +63,8 @@ int main()
 	bool windowAutoColor = false;
 	bool autoFollowMouse = false;
 	bool changedText = false;
+
+	Board brd;
 
 		//Buttons Start
 		auto &b1 = buttonHandler.addButton("Random Color", [&]
@@ -197,6 +203,13 @@ int main()
 		b14.setDeselectionColour(sf::Color(0, 255, 255, 127));
 		b14.setTextSelectionColour(sf::Color::Green);
 
+		auto &b15 = buttonHandler.addButton("To Snake-Game", [&]
+			{
+			});
+		b15.setSelectionColour(sf::Color(0, 255, 255, 127));
+		b15.setDeselectionColour(sf::Color(0, 255, 255, 127));
+		b15.setTextSelectionColour(sf::Color::Green);
+
 		//Buttons End
 
 	keyHandler.addKey(sf::Keyboard::W, [&] 
@@ -267,6 +280,7 @@ int main()
 
 		window.clear(windowColor);
 		window.draw(*shape);
+		game.Go(window);
 		buttonHandler.draw(window);
 		window.display();
 	}
