@@ -52,7 +52,7 @@ int main()
 	buttonHandler.setNextPosition(150, 100);
 	buttonHandler.setSpacing(10);
 	
-	std::unique_ptr<sf::Shape> shape = std::make_unique<sf::RectangleShape>(sf::Vector2f(40, 40));
+	std::unique_ptr<sf::Shape> shape = std::make_unique<sf::RectangleShape>(sf::Vector2f(30, 30));
 	shape->setPosition(200, 300);
 
 	bool mouseMovable = false;
@@ -159,7 +159,7 @@ int main()
 		auto &b11 = buttonHandler.addButton("Follow Mouse", [&]
 			{
 				auto pos = sf::Mouse::getPosition(window);
-				shape->setPosition(pos.x - 20, pos.y - 20);
+				shape->setPosition(pos.x - 15, pos.y - 15);
 				autoFollowMouse = false;
 			});
 		b11.setSelectionColour(sf::Color(0, 255, 255, 127));
@@ -180,9 +180,9 @@ int main()
 				auto color = shape->getFillColor();
 
 				if (dynamic_cast<sf::RectangleShape*>(shape.get()))
-					shape = std::make_unique<sf::CircleShape>(20);
+					shape = std::make_unique<sf::CircleShape>(15);
 				else
-					shape = std::make_unique<sf::RectangleShape>(sf::Vector2f(40, 40));
+					shape = std::make_unique<sf::RectangleShape>(sf::Vector2f(30, 30));
 
 				shape->setPosition(pos);
 				shape->setFillColor(color);
@@ -205,6 +205,7 @@ int main()
 
 		auto &b15 = buttonHandler.addButton("To Snake-Game", [&]
 			{
+				window.create(sf::VideoMode(990, 900), "SFML Snake");
 			});
 		b15.setSelectionColour(sf::Color(0, 255, 255, 127));
 		b15.setDeselectionColour(sf::Color(0, 255, 255, 127));
@@ -262,7 +263,7 @@ int main()
 			if (autoFollowMouse)
 			{
 				auto pos = sf::Mouse::getPosition(window);
-				shape->setPosition(pos.x - 20, pos.y - 20);
+				shape->setPosition(pos.x - 15, pos.y - 15);
 			}
 
 			if (event.type == sf::Event::Closed)

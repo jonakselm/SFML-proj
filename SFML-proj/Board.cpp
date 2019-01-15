@@ -10,12 +10,12 @@ void Board::drawCell(const Location & loc, sf::Color c, sf::RenderTarget &target
 	target.draw(rect);
 }
 
-float Board::GetWidth()
+int Board::GetWidth()
 {
 	return width;
 }
 
-float Board::GetHeight()
+int Board::GetHeight()
 {
 	return height;
 }

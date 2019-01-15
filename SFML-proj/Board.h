@@ -6,10 +6,10 @@ class Board
 {
 public:
 	void drawCell(const Location &loc, sf::Color c, sf::RenderTarget &target);
-	float GetWidth();
-	float GetHeight();
+	int GetWidth();
+	int GetHeight();
 private:
-	const int dim = 40;
-	const float width = 25.f;
-	const float height = 22.5f;
+	const int dim = 30;
+	const int width = 33;
+	const int height = 30;
 };
