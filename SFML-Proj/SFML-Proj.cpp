@@ -280,8 +280,8 @@ int main()
 			windowColor = randomColour();
 
 		window.clear(windowColor);
-		window.draw(*shape);
 		game.Go(window);
+		window.draw(*shape);
 		buttonHandler.draw(window);
 		window.display();
 	}
