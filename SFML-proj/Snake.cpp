@@ -3,12 +3,7 @@
 
 Snake::Snake(const Location & loc)
 {
-	for (int i = 0; i < segments.size(); i++)
-	{
-		segments[i].InitBody(sf::Color::Magenta);
-	}
-
-	segments[0].InitHead(loc);
+	segments.emplace_back(loc);
 }
 
 Location Snake::nextHeadLoc(const Location & delta_loc) const
@@ -18,25 +13,27 @@ Location Snake::nextHeadLoc(const Location & delta_loc) const
 	return l;
 }
 
-void Snake::Grow()
+void Snake::GrowAndMoveBy(const Location &delta_loc)
 {
-	segments.emplace_back();
+	segments.emplace_back(bodyColor);
+
+	MoveBy(delta_loc);
 }
 
-void Snake::Segment::InitHead(const Location & in_loc)
+Snake::Segment::Segment(const Location & in_loc)
 {
 	loc = in_loc;
 	c = sf::Color::Green;
 }
 
-void Snake::Segment::InitBody(sf::Color c_in)
+Snake::Segment::Segment(sf::Color c_in)
 {
 	c = c_in;
 }
 
 void Snake::Segment::Draw(Board & brd, sf::RenderTarget &target) const
 {
-	brd.drawCell(loc, c, target);
+	brd.drawCircle(loc, c, target);
 }
 
 void Snake::Segment::Follow(const Segment & next)
@@ -56,40 +53,42 @@ const Location & Snake::Segment::GetLocation() const
 
 void Snake::Draw(Board & brd, sf::RenderTarget &target) const
 {
-	for (int i = 0; i < segments.size(); i++)
+	for (const auto s : segments)
 	{
-		segments[i].Draw(brd, target);
+		s.Draw(brd, target);
 	}
 }
 
 void Snake::MoveBy(const Location & delta_loc)
 {
-	for (int i = (int)segments.size() - 1; i > 0; i--)
+	for (size_t i = segments.size() - 1; i > 0; i--)
 	{
 		segments[i].Follow(segments[i - 1]);
 	}
-	segments[0].MoveBy(delta_loc);
+	segments.front().MoveBy(delta_loc);
 }
 
 bool Snake::inTile(const Location & lTarget) const
 {
-	for (int i = 0; i < (int)segments.size(); i++)
+	for (const auto s : segments)
 	{
-		if (segments[i].GetLocation() == lTarget)
+		if (s.GetLocation() == lTarget)
 		{
 			return true;
 		}
 	}
+	return false;
 }
 
 bool Snake::inTileExceptEnd(const Location & lTarget) const
 {
-	for (int i = 0; i < (int)segments.size() - 1; i++)
+	for (size_t i = 0; i < segments.size() - 1; i++)
 	{
 		if (segments[i].GetLocation() == lTarget)
 		{
 			return true;
 		}
 	}
+	return false;
 }
 

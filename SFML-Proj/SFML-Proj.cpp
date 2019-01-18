@@ -214,7 +214,7 @@ int main()
 
 		//Buttons End
 
-	keyHandler.addKey(sf::Keyboard::W, [&] 
+	/*keyHandler.addKey(sf::Keyboard::W, [&] 
 		{
 			shape->move(0, -10);
 		});
@@ -229,7 +229,7 @@ int main()
 	keyHandler.addKey(sf::Keyboard::D, [&]
 		{
 			shape->move(10, 0);
-		});
+		});*/
 	keyHandler.addKey(sf::Keyboard::R, [&]
 		{
 			b1.invoke();
