@@ -5,6 +5,7 @@
 #include "KeyHandler.hpp"
 #include "Game.h"
 #include "Board.h"
+#include <typeinfo>
 
 sf::Color randomColour()
 {
@@ -159,7 +160,7 @@ int main()
 		auto &b11 = buttonHandler.addButton("Follow Mouse", [&]
 			{
 				auto pos = sf::Mouse::getPosition(window);
-				shape->setPosition(pos.x - 15, pos.y - 15);
+				shape->setPosition(pos.x - 15.f, pos.y - 15.f);
 				autoFollowMouse = false;
 			});
 		b11.setSelectionColour(sf::Color(0, 255, 255, 127));
@@ -263,7 +264,7 @@ int main()
 			if (autoFollowMouse)
 			{
 				auto pos = sf::Mouse::getPosition(window);
-				shape->setPosition(pos.x - 15, pos.y - 15);
+				shape->setPosition(pos.x - 15.f, pos.y - 15.f);
 			}
 
 			if (event.type == sf::Event::Closed)

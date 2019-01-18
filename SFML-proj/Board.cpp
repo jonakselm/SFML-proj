@@ -6,6 +6,8 @@ void Board::drawCell(const Location & loc, sf::Color c, sf::RenderTarget &target
 	
 	sf::RectangleShape rect(sf::Vector2f(dim, dim));
 	rect.setFillColor(c);
+	rect.setOutlineColor(sf::Color::Transparent);
+	rect.setOutlineThickness(3);
 	rect.setPosition(loc.x * dim, loc.y * dim);
 	target.draw(rect);
 }
