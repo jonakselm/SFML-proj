@@ -92,3 +92,8 @@ bool Snake::inTileExceptEnd(const Location & lTarget) const
 	return false;
 }
 
+int Snake::GetLenght()
+{
+	return (int)segments.size();
+}
+

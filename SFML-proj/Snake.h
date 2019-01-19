@@ -27,6 +27,7 @@ public:
 	void MoveBy(const Location &delta_loc);
 	bool inTile(const Location &lTarget) const;
 	bool inTileExceptEnd(const Location& lTarget) const;
+	int GetLenght();
 private:
 	sf::Color bodyColor = sf::Color::Magenta;
 	//static const sf::Color headColor = sf::Color::Green;

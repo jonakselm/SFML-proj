@@ -13,6 +13,16 @@ struct Location
 		return x == rhs.x && y == rhs.y;
 	}
 
+	bool operator!=(const Location& rhs) const
+	{
+		return !(*this == rhs);
+	}
+
+	Location operator-() const
+	{
+		return { -x,-y };
+	}
+
 	int x, y;
 
 

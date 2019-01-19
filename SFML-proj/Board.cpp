@@ -8,17 +8,17 @@ void Board::drawRect(const Location & loc, sf::Color c, sf::RenderTarget &target
 	rect.setFillColor(c);
 	rect.setOutlineColor(sf::Color::Blue);
 	rect.setOutlineThickness(3);
-	rect.setPosition(loc.x * dim, loc.y * dim);
+	rect.setPosition(float(loc.x * dim), float(loc.y * dim));
 	target.draw(rect);
 }
 
 void Board::drawCircle(const Location & loc, sf::Color c, sf::RenderTarget & target)
 {
-	sf::CircleShape circle(dim / 2);
+	sf::CircleShape circle(float(dim / 2));
 	circle.setFillColor(c);
 	//circle.setOutlineColor(sf::Color::Blue);
 	//circle.setOutlineThickness(3);
-	circle.setPosition(loc.x * dim / 2, loc.y * dim / 2);
+	circle.setPosition(float(loc.x * dim / 2), float(loc.y * dim / 2));
 	target.draw(circle);
 }
 

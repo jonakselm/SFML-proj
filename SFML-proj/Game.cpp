@@ -18,16 +18,32 @@ void Game::UpdateModel()
 	float dt = ft.Mark();
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-		delta_loc = { 0,-1 };
+	{
+		const Location new_delta_loc = { 0,-1 };
+		if (delta_loc != -new_delta_loc || snake.GetLenght() <= 2)
+			delta_loc = new_delta_loc;
+	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-		delta_loc = { 0,1 };
+	{
+		const Location new_delta_loc = { 0,1 };
+		if (delta_loc != -new_delta_loc || snake.GetLenght() <= 2)
+			delta_loc = new_delta_loc;
+	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-		delta_loc = { -1,0 };
+	{
+		const Location new_delta_loc = { -1,0 };
+		if (delta_loc != -new_delta_loc || snake.GetLenght() <= 2)
+			delta_loc = new_delta_loc;
+	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-		delta_loc = { 1,0 };
+	{
+		const Location new_delta_loc = { 1,0 };
+		if (delta_loc != -new_delta_loc || snake.GetLenght() <= 2)
+			delta_loc = new_delta_loc;
+	}
 
 	snakeMoveCounter += dt;
 
