@@ -14,7 +14,6 @@ private:
 	void ComposeFrame(sf::RenderTarget &window);
 public:
 private:
-	Board brd;
 	Snake snake;
 	Location delta_loc = { 1,0 };
 	FrameTimer ft;

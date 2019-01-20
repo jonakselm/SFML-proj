@@ -1,0 +1,30 @@
+#pragma once
+#include "State.hpp"
+#include "Snake.h"
+#include "Location.h"
+#include "FrameTimer.h"
+#include "KeyHandler.hpp"
+#include "Apple.h"
+
+class SnakeGame : public State
+{
+public:
+	SnakeGame();
+	virtual ~SnakeGame();
+
+	void init(sf::Window &window, StateHandler &stateHandler);
+	void updateModel(sf::Window &window, StateHandler &stateHandler) override;
+	void draw(sf::RenderTarget &target) override;
+
+private:
+	KeyHandler keyHandler;
+	Snake snake;
+	Apple m_apple;
+	Location delta_loc = { 1,0 };
+	FrameTimer ft;
+	static constexpr float snakeMovePeriodMin = 0.06f;
+	float snakeMovePeriod = 0.4f;
+	float snakeMoveCounter = 0.0f;
+	static constexpr float snakeSpeedupFactor = 0.005f;
+};
+
