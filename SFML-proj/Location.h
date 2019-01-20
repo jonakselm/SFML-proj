@@ -23,7 +23,5 @@ struct Location
 		return { -x,-y };
 	}
 
-	int x, y;
-
-
+	float x, y;
 };

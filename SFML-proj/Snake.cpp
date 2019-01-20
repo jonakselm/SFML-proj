@@ -2,6 +2,8 @@
 #include "Snake.h"
 
 Snake::Snake(const Location & loc)
+	:
+	shape(sf::Vector2f(Board::dim, Board::dim))
 {
 	segments.emplace_back(loc);
 }
@@ -15,25 +17,28 @@ Location Snake::nextHeadLoc(const Location & delta_loc) const
 
 void Snake::GrowAndMoveBy(const Location &delta_loc)
 {
-	segments.emplace_back(bodyColor);
+	segments.emplace_back(sf::Color::Magenta);
 
 	MoveBy(delta_loc);
 }
 
 Snake::Segment::Segment(const Location & in_loc)
+	:
+	shape(sf::Vector2f(Board::dim, Board::dim))
 {
 	loc = in_loc;
-	c = sf::Color::Green;
+	shape.setFillColor(sf::Color::Green);
+	shape.setPosition(loc.x * Board::dim, loc.y * Board::dim);
 }
 
 Snake::Segment::Segment(sf::Color c_in)
 {
-	c = c_in;
+	shape.setFillColor(c_in);
 }
 
-void Snake::Segment::Draw(Board & brd, sf::RenderTarget &target) const
+void Snake::Segment::draw(sf::RenderTarget &target) const
 {
-	brd.drawCircle(loc, c, target);
+	target.draw(shape);
 }
 
 void Snake::Segment::Follow(const Segment & next)
@@ -43,7 +48,7 @@ void Snake::Segment::Follow(const Segment & next)
 
 void Snake::Segment::MoveBy(const Location & delta_loc)
 {
-	loc.Add(delta_loc);
+	shape.move(delta_loc.x * Board::dim, delta_loc.y * Board::dim);
 }
 
 const Location & Snake::Segment::GetLocation() const
@@ -51,26 +56,31 @@ const Location & Snake::Segment::GetLocation() const
 	return loc;
 }
 
-void Snake::Draw(Board & brd, sf::RenderTarget &target) const
+sf::FloatRect Snake::Segment::getGlobalBounds() const
 {
-	for (const auto s : segments)
+	return shape.getGlobalBounds();
+}
+
+void Snake::draw(sf::RenderTarget &target) const
+{
+	for (auto it = segments.rbegin(); it != segments.rend(); ++it)
 	{
-		s.Draw(brd, target);
+		it->draw(target);
 	}
 }
 
 void Snake::MoveBy(const Location & delta_loc)
 {
-	for (size_t i = segments.size() - 1; i > 0; i--)
+	/*for (size_t i = segments.size() - 1; i > 0; i--)
 	{
 		segments[i].Follow(segments[i - 1]);
-	}
+	}*/
 	segments.front().MoveBy(delta_loc);
 }
 
 bool Snake::inTile(const Location & lTarget) const
 {
-	for (const auto s : segments)
+	for (const auto &s : segments)
 	{
 		if (s.GetLocation() == lTarget)
 		{
@@ -92,8 +102,13 @@ bool Snake::inTileExceptEnd(const Location & lTarget) const
 	return false;
 }
 
-int Snake::GetLenght()
+size_t Snake::GetLenght()
 {
-	return (int)segments.size();
+	return segments.size();
+}
+
+sf::FloatRect Snake::getGlobalBounds() const
+{
+	return segments.front().getGlobalBounds();
 }
 
