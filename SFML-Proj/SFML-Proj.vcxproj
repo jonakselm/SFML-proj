@@ -169,6 +169,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="App.hpp" />
+    <ClInclude Include="Apple.h" />
     <ClInclude Include="Board.h" />
     <ClInclude Include="Button.hpp" />
     <ClInclude Include="ButtonHandler.hpp" />
@@ -176,15 +178,22 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="KeyHandler.hpp" />
     <ClInclude Include="Location.h" />
+    <ClInclude Include="MainMenu.hpp" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Shape.hpp" />
     <ClInclude Include="Snake.h" />
+    <ClInclude Include="SnakeGame.hpp" />
+    <ClInclude Include="State.hpp" />
+    <ClInclude Include="StateHandler.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Board.cpp" />
+    <ClCompile Include="App.cpp" />
+    <ClCompile Include="Apple.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="ButtonHandler.cpp" />
     <ClCompile Include="FrameTimer.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -193,6 +202,8 @@
     </ClCompile>
     <ClCompile Include="SFML-proj.cpp" />
     <ClCompile Include="Snake.cpp" />
+    <ClCompile Include="SnakeGame.cpp" />
+    <ClCompile Include="State.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

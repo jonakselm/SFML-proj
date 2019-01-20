@@ -5,8 +5,11 @@
 class ButtonHandler
 {
 public:
-	ButtonHandler(sf::Font &font) : m_font(font) {}
+	ButtonHandler() = default;
 	~ButtonHandler() = default;
+
+	void setFont(const sf::Font &font) { m_pFont = &font; }
+	const sf::Font &getFont() { return *m_pFont; }
 
 	void setSpacing(int spacing);
 	int getSpacing() const;
@@ -40,6 +43,6 @@ private:
 	int m_spacing = 10;
 	std::list<Button> m_buttons;
 	decltype(m_buttons)::iterator m_it;
-	sf::Font &m_font;
+	const sf::Font *m_pFont = nullptr;
 };
 

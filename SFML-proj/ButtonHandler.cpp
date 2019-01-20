@@ -35,7 +35,7 @@ std::pair<int, int> ButtonHandler::getDefaultSize() const
 
 Button &ButtonHandler::addButton(const std::string &text, const std::function<void()> &func)
 {
-	auto &button = m_buttons.emplace_back(m_font);
+	auto &button = m_buttons.emplace_back(*m_pFont);
 	if (m_buttons.size() == 1)
 	{
 		button.select();
@@ -102,15 +102,19 @@ void ButtonHandler::handleKeyEvents(sf::Window &window)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
 		m_it->deselect();
-		if (m_it-- == m_buttons.begin())
+		if (m_it == m_buttons.begin())
 			m_it = --m_buttons.end();
+		else
+			m_it--;
 		m_it->select();
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 	{
 		m_it->deselect();
-		if (m_it++ == --m_buttons.end())
+		if (m_it == --m_buttons.end())
 			m_it = m_buttons.begin();
+		else
+			m_it++;
 		m_it->select();
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))

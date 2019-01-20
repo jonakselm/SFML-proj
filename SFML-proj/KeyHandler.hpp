@@ -34,5 +34,5 @@ public:
 	}
 
 private:
-	std::vector<KeyInfo> m_keys;
+	std::list<KeyInfo> m_keys;
 };
