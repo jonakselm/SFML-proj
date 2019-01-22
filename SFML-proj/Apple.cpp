@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Apple.h"
 #include "Board.h"
+#include <random>
 
 Apple::Apple() :
 	m_shape(15.f)
@@ -12,7 +13,10 @@ Apple::Apple() :
 
 void Apple::respawn()
 {
-	m_shape.setPosition(float(std::rand() % (Board::dim * (Board::width - 1))), float(std::rand() % Board::dim * (Board::height - 1)));
+	Location newLoc;
+	newLoc.x = float(std::rand() % (Board::width - 1));
+	newLoc.y = float(std::rand() % (Board::height - 1));
+	m_shape.setPosition((newLoc.x * Board::dim), (newLoc.y * Board::dim));
 }
 
 void Apple::draw(sf::RenderTarget &target) const
