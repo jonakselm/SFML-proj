@@ -64,15 +64,14 @@ void SnakeGame::updateModel(sf::Window & window, StateHandler & stateHandler)
 
 		if (snake.intersects(m_apple))
 		{
-			m_apple.respawn();
 			snake.GrowAndMoveBy(delta_loc);
+			m_apple.respawn();
 		}
 		else
 		{
 			snake.MoveBy(delta_loc);
 		}
 	}
-
 
 	snakeMovePeriod = std::max(snakeMovePeriod - dt * snakeSpeedupFactor, snakeMovePeriodMin);
 }

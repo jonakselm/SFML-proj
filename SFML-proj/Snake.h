@@ -16,11 +16,10 @@ private:
 		void Follow(const Segment &next);
 		void MoveBy(const Location &delta_loc);
 		const Location &GetLocation() const;
-		sf::FloatRect getGlobalBounds() const override;
+		sf::FloatRect getGlobalBounds() const;
 	private:
 		Location loc;
 		sf::Color c;
-		sf::RectangleShape shape;
 	};
 public:
 	Snake(const Location &loc);
@@ -30,10 +29,9 @@ public:
 	void MoveBy(const Location &delta_loc);
 	bool inTile(const Location &lTarget) const;
 	bool inTileExceptEnd(const Location& lTarget) const;
-	size_t GetLenght();
-
-	sf::FloatRect getGlobalBounds() const override;
+	int GetLenght();
+	sf::FloatRect getGlobalBounds() const;
 private:
-	sf::RectangleShape shape;
+	sf::Color bodyColor = sf::Color::Magenta;
 	std::vector<Segment> segments;
 };
