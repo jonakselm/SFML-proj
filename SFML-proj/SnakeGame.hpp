@@ -5,6 +5,7 @@
 #include "FrameTimer.h"
 #include "KeyHandler.hpp"
 #include "Apple.h"
+#include "ButtonHandler.hpp"
 
 class SnakeGame : public State
 {
@@ -17,7 +18,9 @@ public:
 	void draw(sf::RenderTarget &target) override;
 
 private:
+	sf::Font font;
 	KeyHandler keyHandler;
+	ButtonHandler buttonHandler;
 	Snake snake;
 	Apple m_apple;
 	Location delta_loc = { 1,0 };
@@ -26,5 +29,6 @@ private:
 	float snakeMovePeriod = 0.4f;
 	float snakeMoveCounter = 0.0f;
 	static constexpr float snakeSpeedupFactor = 0.005f;
+	bool gameOver = false;
 };
 
