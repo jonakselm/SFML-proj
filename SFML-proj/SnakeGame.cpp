@@ -25,7 +25,7 @@ void SnakeGame::init(sf::Window & window, StateHandler & stateHandler)
 	buttonHandler.setFont(font);
 	buttonHandler.setNextPosition(450, 400);
 
-	auto &bRestart = buttonHandler.addButton("Game Over\nRestart?", [&]
+	auto &bRestart = buttonHandler.addButton("Game Over!\nRestart?", [&]
 		{
 			stateHandler.Switch<SnakeGame>();
 		});
@@ -75,7 +75,8 @@ void SnakeGame::updateModel(sf::Window & window, StateHandler & stateHandler)
 			snakeMoveCounter -= snakeMovePeriod;
 			const Location next = snake.nextHeadLoc(delta_loc);
 
-			if (snake.inTileExceptEnd(next))
+			if (snake.inTileExceptEnd(next) ||
+				!Board::InsideBoard(next))
 			gameOver = true;
 
 			if (snake.intersects(m_apple))

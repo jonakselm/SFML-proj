@@ -18,3 +18,9 @@ void Board::drawCircle(const Location & loc, sf::Color c, sf::RenderTarget & tar
 	shape.setPosition(loc.x * dim, loc.y * dim);
 	target.draw(shape);
 }
+
+bool Board::InsideBoard(const Location &loc)
+{
+	return loc.x >= 0 && loc.y >= 0 &&
+		loc.x <= (width - 1) && loc.y <= (height - 1);
+}
