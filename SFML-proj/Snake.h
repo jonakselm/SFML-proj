@@ -31,7 +31,9 @@ public:
 	bool inTileExceptEnd(const Location& lTarget) const;
 	int GetLenght();
 	sf::FloatRect getGlobalBounds() const;
+	int GetScore();
 private:
 	sf::Color bodyColor = sf::Color::Magenta;
 	std::vector<Segment> segments;
+	int score;
 };

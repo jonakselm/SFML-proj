@@ -19,6 +19,7 @@ public:
 
 private:
 	sf::Font font;
+	sf::Text score;
 	KeyHandler keyHandler;
 	ButtonHandler buttonHandler;
 	Snake snake;

@@ -18,6 +18,8 @@ void Snake::GrowAndMoveBy(const Location &delta_loc)
 	segments.emplace_back(bodyColor);
 
 	MoveBy(delta_loc);
+
+	score++;
 }
 
 Snake::Segment::Segment(const Location & in_loc)
@@ -105,5 +107,10 @@ int Snake::GetLenght()
 sf::FloatRect Snake::getGlobalBounds() const
 {
 	return segments.front().getGlobalBounds();
+}
+
+int Snake::GetScore()
+{
+	return score;
 }
 

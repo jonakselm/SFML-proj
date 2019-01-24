@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "SnakeGame.hpp"
 #include "StateHandler.hpp"
+#include <sstream>
 
 SnakeGame::SnakeGame()
 	:
@@ -29,6 +30,9 @@ void SnakeGame::init(sf::Window & window, StateHandler & stateHandler)
 		{
 			stateHandler.Switch<SnakeGame>();
 		});
+
+	score.setFont(font);
+	score.setPosition(10, 5);
 }
 
 void SnakeGame::updateModel(sf::Window & window, StateHandler & stateHandler)
@@ -36,6 +40,10 @@ void SnakeGame::updateModel(sf::Window & window, StateHandler & stateHandler)
 	keyHandler.handleKeyInput();
 	if (gameOver)
 	buttonHandler.handleInput(window);
+
+	std::stringstream ss;
+	ss << snake.GetScore();
+	score.setString(ss.str());
 
 	float dt = ft.Mark();
 	if (!gameOver)
@@ -83,6 +91,7 @@ void SnakeGame::updateModel(sf::Window & window, StateHandler & stateHandler)
 			{
 				snake.GrowAndMoveBy(delta_loc);
 				m_apple.respawn();
+
 			}
 			else
 			{
@@ -102,5 +111,8 @@ void SnakeGame::draw(sf::RenderTarget & target)
 		snake.draw(target);
 	}
 	if (gameOver)
-	buttonHandler.draw(target);
+	{
+		buttonHandler.draw(target);
+	}
+	target.draw(score);
 }
