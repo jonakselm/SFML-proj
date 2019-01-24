@@ -7,7 +7,7 @@ void Board::drawRect(const Location & loc, sf::Color c, sf::RenderTarget & targe
 	shape.setFillColor(c);
 	shape.setPosition(loc.x * dim, loc.y * dim);
 	shape.setOutlineColor(sf::Color::Black);
-	shape.setOutlineThickness(2);
+	shape.setOutlineThickness(-1.5);
 	target.draw(shape);
 }
 
