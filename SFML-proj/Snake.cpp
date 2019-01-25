@@ -114,3 +114,10 @@ int Snake::GetScore()
 	return score;
 }
 
+sf::FloatRect Snake::getNextBounds(Location &delta_loc) const
+{
+	Location l(segments[0].GetLocation());
+	l.Add(delta_loc);
+	return sf::FloatRect(l.x * Board::dim, l.y * Board::dim, Board::dim, Board::dim);
+}
+

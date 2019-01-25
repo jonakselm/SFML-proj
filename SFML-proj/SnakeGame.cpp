@@ -87,7 +87,7 @@ void SnakeGame::updateModel(sf::Window & window, StateHandler & stateHandler)
 				!Board::InsideBoard(next))
 			gameOver = true;
 
-			if (snake.intersects(m_apple))
+			if (m_apple.getGlobalBounds().intersects(snake.getNextBounds(delta_loc)))
 			{
 				snake.GrowAndMoveBy(delta_loc);
 				m_apple.respawn();

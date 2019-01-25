@@ -32,6 +32,7 @@ public:
 	int GetLenght();
 	sf::FloatRect getGlobalBounds() const;
 	int GetScore();
+	sf::FloatRect getNextBounds(Location &delta_loc) const;
 private:
 	sf::Color bodyColor = sf::Color::Magenta;
 	std::vector<Segment> segments;
