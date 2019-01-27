@@ -42,27 +42,30 @@ public:
 		m_transition = Transition::None;
 	}
 
-	template <class T>
-	State *Push()
+	template <class T, class ...Args>
+	State *Push(Args &&...args)
 	{
 		m_transition = Transition::Push;
-		m_queuedState = std::make_unique<T>();
+		m_queuedState = std::make_unique<T>(
+			std::forward(args)...);
 		return m_queuedState.get();
 	}
 
-	template <class T>
-	State *Switch()
+	template <class T, class ...Args>
+	State *Switch(Args &&...args)
 	{
 		m_transition = Transition::Pop;
-		m_queuedState = std::make_unique<T>();
+		m_queuedState = std::make_unique<T>(
+			std::forward(args)...);
 		return m_queuedState.get();
 	}
 
-	template <class T>
-	State *Reset()
+	template <class T, class ...Args>
+	State *Reset(Args &&...args)
 	{
 		m_transition = Transition::Reset;
-		m_queuedState = std::make_unique<T>();
+		m_queuedState = std::make_unique<T>(
+			std::forward(args)...);
 		return m_queuedState.get();
 	}
 
