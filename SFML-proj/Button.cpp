@@ -18,10 +18,9 @@ void Button::setPosition(double x, double y)
 	centralizeText(static_cast<sf::IntRect>(bounds));
 }
 
-std::pair<double, double> Button::getPosition() const
+sf::Vector2f Button::getPosition() const
 {
-	auto rect = m_sprite.getGlobalBounds();
-	return std::make_pair(rect.left, rect.top);
+	return m_sprite.getPosition();
 }
 
 void Button::setSize(double width, double height)
@@ -37,10 +36,10 @@ void Button::setSize(double width, double height)
 	centralizeText(static_cast<sf::IntRect>(bounds));
 }
 
-std::pair<double, double> Button::getSize() const
+sf::Vector2f Button::getSize() const
 {
 	auto rect = m_sprite.getGlobalBounds();
-	return std::make_pair(rect.width, rect.height);
+	return sf::Vector2f(rect.width, rect.height);
 }
 
 bool Button::contains(double x, double y)
