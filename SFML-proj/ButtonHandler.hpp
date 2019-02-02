@@ -9,7 +9,7 @@ public:
 	~ButtonHandler() = default;
 
 	void setFont(const sf::Font &font) { m_pFont = &font; }
-	const sf::Font &getFont() { return *m_pFont; }
+	const sf::Font &getFont() const { return *m_pFont; }
 
 	void setSpacing(int spacing);
 	int getSpacing() const;

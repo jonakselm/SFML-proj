@@ -14,13 +14,13 @@ public:
 	void setPosition(double x, double y);
 
 	// Usage: auto[x, y] = button.getPosition();
-	std::pair<double, double> getPosition() const;
+	sf::Vector2f getPosition() const;
 
 	// Usage: button.setSize(width, height);
 	void setSize(double width, double height);
 	
 	// Usage: auto[width, height] = button.getSize();
-	std::pair<double, double> getSize() const;
+	sf::Vector2f getSize() const;
 
 	bool contains(double x, double y); 
 	sf::FloatRect getGlobalBounds() const;
