@@ -1,4 +1,4 @@
-#include "pch.h"
+#include "stdafx.h"
 #include "Board.h"
 
 void Board::drawRect(const Location & loc, sf::Color c, sf::RenderTarget & target)

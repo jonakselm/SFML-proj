@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef PCH_H
-#define PCH_H
+#ifndef STDAFX_H
+#define STDAFX_H
 
 #ifndef NDEBUG
 #define DEBUG

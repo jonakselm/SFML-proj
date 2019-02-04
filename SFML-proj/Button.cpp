@@ -1,4 +1,4 @@
-#include "pch.h"
+#include "stdafx.h"
 #include "Button.hpp"
 
 Button::Button(const sf::Font &font) : m_pFont(&font)

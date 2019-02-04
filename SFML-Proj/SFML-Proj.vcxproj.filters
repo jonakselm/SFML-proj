@@ -9,21 +9,21 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="SnakeGame">
       <UniqueIdentifier>{9d8ec573-3207-4bec-9864-30aa178d2434}</UniqueIdentifier>
     </Filter>
     <Filter Include="BrickBreaker">
       <UniqueIdentifier>{2c26152f-1431-4cde-bb53-d5d40d063b6f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pong">
+      <UniqueIdentifier>{d3aefb76-e858-4145-813f-9b1ee2175100}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Button.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -78,11 +78,23 @@
     <ClInclude Include="Ball.h">
       <Filter>BrickBreaker</Filter>
     </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Paddle.h">
+      <Filter>Pong</Filter>
+    </ClInclude>
+    <ClInclude Include="PongBall.h">
+      <Filter>Pong</Filter>
+    </ClInclude>
+    <ClInclude Include="PongGame.hpp">
+      <Filter>Pong</Filter>
+    </ClInclude>
+    <ClInclude Include="Walls.hpp">
+      <Filter>Pong</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="pch.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Button.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -127,6 +139,21 @@
     </ClCompile>
     <ClCompile Include="Ball.cpp">
       <Filter>BrickBreaker</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Paddle.cpp">
+      <Filter>Pong</Filter>
+    </ClCompile>
+    <ClCompile Include="PongBall.cpp">
+      <Filter>Pong</Filter>
+    </ClCompile>
+    <ClCompile Include="PongGame.cpp">
+      <Filter>Pong</Filter>
+    </ClCompile>
+    <ClCompile Include="Walls.cpp">
+      <Filter>Pong</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

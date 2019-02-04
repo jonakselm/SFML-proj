@@ -1,4 +1,4 @@
-#include "pch.h"
+#include "stdafx.h"
 #include "Brick.h"
 #include "Location.h"
 #include "Ball.h"

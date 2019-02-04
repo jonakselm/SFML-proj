@@ -1,4 +1,4 @@
-#include "pch.h"
+#include "stdafx.h"
 #include "Snake.h"
 
 Snake::Snake(const Location & loc)

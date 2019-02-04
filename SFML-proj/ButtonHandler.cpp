@@ -1,4 +1,4 @@
-#include "pch.h"
+#include "stdafx.h"
 #include "ButtonHandler.hpp"
 
 void ButtonHandler::setSpacing(int spacing)

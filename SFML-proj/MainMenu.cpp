@@ -1,8 +1,9 @@
-#include "pch.h"
+#include "stdafx.h"
 #include "MainMenu.hpp"
 #include "StateHandler.hpp"
 #include "SnakeGame.hpp"
 #include "BrickBreaker.h"
+#include "PongGame.hpp"
 
 MainMenu::MainMenu()
 {
@@ -29,6 +30,11 @@ void MainMenu::init(sf::Window &window, StateHandler &stateHandler)
 	m_buttonHandler.addButton("Brick Breaker", [&]
 		{
 			stateHandler.Push<BrickBreaker>();
+		});
+
+	m_buttonHandler.addButton("Pong", [&]
+		{
+			stateHandler.Push<PongGame>();
 		});
 }
 

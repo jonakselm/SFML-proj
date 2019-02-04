@@ -1,4 +1,4 @@
-#include "pch.h"
+#include "stdafx.h"
 #include "State.hpp"
 
 bool State::pollEvent(sf::Window &window)
