@@ -22,15 +22,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Practise">
+      <UniqueIdentifier>{d6de3636-57fc-41e5-ac85-7f72f5c246d0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ButtonHandler.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Location.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
@@ -93,6 +93,18 @@
     <ClInclude Include="Walls.hpp">
       <Filter>Pong</Filter>
     </ClInclude>
+    <ClInclude Include="Practise.hpp">
+      <Filter>Practise</Filter>
+    </ClInclude>
+    <ClInclude Include="Worm.hpp">
+      <Filter>Practise</Filter>
+    </ClInclude>
+    <ClInclude Include="Location.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Food.h">
+      <Filter>Practise</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Button.cpp">
@@ -154,6 +166,15 @@
     </ClCompile>
     <ClCompile Include="Walls.cpp">
       <Filter>Pong</Filter>
+    </ClCompile>
+    <ClCompile Include="Practise.cpp">
+      <Filter>Practise</Filter>
+    </ClCompile>
+    <ClCompile Include="Worm.cpp">
+      <Filter>Practise</Filter>
+    </ClCompile>
+    <ClCompile Include="Food.cpp">
+      <Filter>Practise</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

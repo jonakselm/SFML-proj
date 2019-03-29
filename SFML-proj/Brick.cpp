@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Brick.h"
-#include "Location.h"
+#include "Location.hpp"
 #include "Ball.h"
 
 

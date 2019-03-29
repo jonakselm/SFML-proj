@@ -4,6 +4,7 @@
 #include "SnakeGame.hpp"
 #include "BrickBreaker.h"
 #include "PongGame.hpp"
+#include "Practise.hpp"
 
 MainMenu::MainMenu()
 {
@@ -35,6 +36,11 @@ void MainMenu::init(sf::Window &window, StateHandler &stateHandler)
 	m_buttonHandler.addButton("Pong", [&]
 		{
 			stateHandler.Push<PongGame>();
+		});
+
+	m_buttonHandler.addButton("Practise", [&]
+		{
+			stateHandler.Push<Practise>();
 		});
 }
 

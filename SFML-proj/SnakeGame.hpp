@@ -1,7 +1,7 @@
 #pragma once
 #include "State.hpp"
 #include "Snake.h"
-#include "Location.h"
+#include "Location.hpp"
 #include "FrameTimer.h"
 #include "KeyHandler.hpp"
 #include "Apple.h"
